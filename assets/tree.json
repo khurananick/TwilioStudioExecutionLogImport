@@ -1,0 +1,73 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v4.3.json",
+  "padding": 50,
+  "autosize": "none",
+  "signals": [
+    {"name": "method", "value": "cluster"},
+    {"name": "links", "value": "diagonal"}
+  ],
+  "data": [
+    {
+      "name": "tree",
+      "url": {"index": "studio_execution_logs_tree"},
+      "format": {"property": "hits.hits[0]._source.data"},
+      "transform": [
+        {"type": "stratify", "key": "id", "parentKey": "parent"},
+        {
+          "type": "tree",
+          "method": {"signal": "method"},
+          "size": [{"signal": "width"}, {"signal": "height"}]
+        }
+      ]
+    },
+    {
+      "name": "links",
+      "source": "tree",
+      "transform": [
+        {"type": "treelinks"},
+        {"type": "linkpath", "shape": {"signal": "links"}}]
+    }
+  ],
+  "scales": [{"name": "color", "type": "ordinal", "range": {"scheme": "category20"}}],
+  "marks": [
+    {
+      "type": "path",
+      "from": {"data": "links"},
+      "encode": {
+        "update": {"path": {"field": "path"}, "stroke": {"value": "#ccc"}}
+      }
+    },
+    {
+      "type": "symbol",
+      "from": {"data": "tree"},
+      "encode": {
+        "enter": {"size": {"value": 150}, "stroke": {"value": "#000"}},
+        "update": {
+          "x": {"field": "x"},
+          "y": {"field": "y"},
+          "fill": {"scale": "color", "field": "depth"}
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {"data": "tree"},
+      "encode": {
+        "enter": {
+          "text": {"field": "display_name"},
+          "fontSize": {"value": 10},
+          "baseline": {"value": "middle"},
+          "align": {"value": "right"},
+          "angle": {"value": 15}
+        },
+        "update": {
+          "x": {"field": "x"},
+          "y": {"field": "y"},
+          "dx": {"value": -10}
+        }
+      }
+    }
+  ]
+}
+
+
