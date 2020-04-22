@@ -1,4 +1,5 @@
 # import pythons libs
+import os
 import sys
 from datetime import date, datetime, timedelta
 import requests
@@ -11,11 +12,15 @@ from threading import Thread
 from time import sleep
 
 # import local libs
-import secret as ENV
+from dotenv import load_dotenv
+load_dotenv()
+TWILIO_ACCOUNT_SID=os.environ.get('ACCOUNT_SID')
+TWILIO_AUTH_TOKEN=os.environ.get('AUTH_TOKEN')
+
 import functions as f
 
 es = Elasticsearch()
-client = Client(ENV.TWILIO_ACCOUNT_SID, ENV.TWILIO_AUTH_TOKEN)
+client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
 f.datetime = datetime
 f.timedelta = timedelta
 f.client = client
