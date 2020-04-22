@@ -22,7 +22,7 @@ Confirm both services are running.
 
 **Step 2:** Clone this repo to your machine.
 
-**Step 3:** Move `secret.py.tmp` to `secret.py` and add your Twilio account credentials.
+**Step 3:** Create a .env file and add `ACCOUNT_SID` and `AUTH_TOKEN` from your Twilio account.
 
 **Step 4:** Run `pip3 install -r requirements.txt` to download required libs.
 
