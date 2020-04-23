@@ -39,32 +39,32 @@ Confirm both services are running.
 2. Click on "Saved Objects" under Kibana.
 3. Click on Import.
 4. Import the file in this repo at `assets/export.ndjson`
-![Kibana Import](./screenshots/kibana-import.png)
+![Kibana Import](./screenshots/kibana-import.png?raw=true)
 
 **If successful, you will see these items listed:**
 
-![](https://raw.githubusercontent.com/khurananick/TwilioStudioExecutionLogImport/master/screenshots/kibana-import-sucess.png)
+![Kibana Import Success](./screenshots/kibana-import-sucess.png?raw=true)
 
 .
 .
 
 ## Dashboard Setup
 1. Go to your kibana home page. For docker it's probably `localhost:8888` and for manual install it's probably `localhost:5601`. You will be greeted with the page below. Click the Dashboard icon to continue.
-![](https://raw.githubusercontent.com/khurananick/TwilioStudioExecutionLogImport/master/screenshots/kibana-home-annotated.png)
+![Kibana Home Anotated](./screenshots/kibana-home-annotated.png?raw=true)
 
 2. Select STUDIO FLOW LIVE VIEW or STUDIO FLOW LIVE TREE VIEW based on the type of graph you'd like to see. For this guide, we will use the former. 
 
-![](https://raw.githubusercontent.com/khurananick/TwilioStudioExecutionLogImport/master/screenshots/kibana-dashboard-list.png)
+![Kibana Dashboard List](./screenshots/kibana-dashboard-list.png?raw=true)
 
 3. Set up your dashboard to show the last 5 minutes of data, and refresh every 5 seconds. See the 5 steps listed below: 
 
-![](https://raw.githubusercontent.com/khurananick/TwilioStudioExecutionLogImport/master/screenshots/kibana-dashboard-settings.png)
+![Kibana Dashboard Settings](./screenshots/kibana-dashboard-settings.png?raw=true)
 
 **Once you click Apply and then Start, you can click out of this popout.**
 
 4. Run the python task to start importing your Studio Log data with `python3 run.py {FLOW_SID}` and start pinging your studio flow, then you can start seeing the data in your dashboard screen:
 
-![](https://raw.githubusercontent.com/khurananick/TwilioStudioExecutionLogImport/master/screenshots/kibana-dashboard.png)
+![Kibana Dashboard](./screenshots/kibana-dashboard.png?raw=true)
 
 .
 .
