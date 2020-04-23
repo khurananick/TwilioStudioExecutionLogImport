@@ -39,7 +39,7 @@ Confirm both services are running.
 2. Click on "Saved Objects" under Kibana.
 3. Click on Import.
 4. Import the file in this repo at `assets/export.ndjson`
-<img src="./screenshots/kibana-import.png?raw=true" width="500px" />
+<img src="./screenshots/kibana-import.png?raw=true" width="500px" style="margin:0 auto;" />
 
 **If successful, you will see these items listed:**
 
