@@ -39,32 +39,32 @@ Confirm both services are running.
 2. Click on "Saved Objects" under Kibana.
 3. Click on Import.
 4. Import the file in this repo at `assets/export.ndjson`
-<p align="center"><img src="./screenshots/kibana-import.png?raw=true" width="500px" style="margin:0 auto;" /></p>
+<p align="center"><img src="./screenshots/kibana-import.png?raw=true" width="650px" /></p>
 
 **If successful, you will see these items listed:**
 
-![Kibana Import Success](./screenshots/kibana-import-sucess.png?raw=true)
+<p align="center"><img src="./screenshots/kibana-import-sucess.png?raw=true" width="650px" /></p>
 
 .
 .
 
 ## Dashboard Setup
 1. Go to your kibana home page. For docker it's probably `localhost:8888` and for manual install it's probably `localhost:5601`. You will be greeted with the page below. Click the Dashboard icon to continue.
-![Kibana Home Anotated](./screenshots/kibana-home-annotated.png?raw=true)
+<p align="center"><img src="./screenshots/kibana-home-annotated.png?raw=true" width="650px" /></p>
 
 2. Select STUDIO FLOW LIVE VIEW or STUDIO FLOW LIVE TREE VIEW based on the type of graph you'd like to see. For this guide, we will use the former. 
 
-![Kibana Dashboard List](./screenshots/kibana-dashboard-list.png?raw=true)
+<p align="center"><img src="./screenshots/kibana-dashboard-list.png?raw=true" width="650px" /></p>
 
 3. Set up your dashboard to show the last 5 minutes of data, and refresh every 5 seconds. See the 5 steps listed below: 
 
-![Kibana Dashboard Settings](./screenshots/kibana-dashboard-settings.png?raw=true)
+<p align="center"><img src="./screenshots/kibana-dashboard-settings.png?raw=true" width="650px" /></p>
 
 **Once you click Apply and then Start, you can click out of this popout.**
 
 4. Run the python task to start importing your Studio Log data with `python3 run.py {FLOW_SID}` and start pinging your studio flow, then you can start seeing the data in your dashboard screen:
 
-![Kibana Dashboard](./screenshots/kibana-dashboard.png?raw=true)
+<p align="center"><img src="./screenshots/kibana-dashboard.png?raw=true" width="650px" /></p>
 
 .
 .
