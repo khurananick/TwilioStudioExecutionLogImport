@@ -39,7 +39,7 @@ Confirm both services are running.
 2. Click on "Saved Objects" under Kibana.
 3. Click on Import.
 4. Import the file in this repo at `assets/export.ndjson`
-![](https://raw.githubusercontent.com/khurananick/TwilioStudioExecutionLogImport/master/screenshots/kibana-import.png)
+![Kibana Import](../screenshots/kibana-import.png)
 
 **If successful, you will see these items listed:**
 
