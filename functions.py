@@ -42,8 +42,8 @@ def format_tree_data(executions):
       i+=1
   # format into steps
   data = {}
+  fkey = ""
   for narr in arr:
-    fkey = ""
     i = 0
     for step in narr:
       if not fkey:
@@ -57,8 +57,10 @@ def format_tree_data(executions):
           "count": 0
         }
       data[step]['count'] += 1
-      data[step]['display_name'] = f"{data[step]['name']} ({data[step]['count']}) ({percent_str(data[step]['count'], data[fkey]['count'])})"
       i += 1
+  # add %s
+  for step in data:
+    data[step]['display_name'] = f"{data[step]['name']} ({data[step]['count']}) ({percent_str(data[step]['count'], data[fkey]['count'])})"
   # convert data hash to list
   data = list(data.values())
   return { "data":  data }

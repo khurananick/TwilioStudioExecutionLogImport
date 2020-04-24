@@ -16,7 +16,6 @@ from dotenv import load_dotenv
 load_dotenv()
 TWILIO_ACCOUNT_SID=os.environ.get('ACCOUNT_SID')
 TWILIO_AUTH_TOKEN=os.environ.get('AUTH_TOKEN')
-print(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
 import functions as f
 
 es = Elasticsearch()
