@@ -48,8 +48,6 @@ def run_5min_import_to_elastic_search(flow_sid):
   # if logs returned, push to elasticsearch
   if len(executions) > 0:
     # create index if not exists
-    es.indices.create(index=ELASTICSEARCH_INDEX_NAME, ignore=400)
-    es.indices.create(index=ELASTICSEARCH_TREE_INDEX_NAME, ignore=400)
     for execution in executions:
       for step in execution['steps']:
         existing = es.get(index=ELASTICSEARCH_INDEX_NAME, id=step['sid'], ignore=[400, 404])
@@ -63,6 +61,8 @@ def run_5min_import_to_elastic_search(flow_sid):
 def init():
   flow_sid = sys.argv[1]
   run_5min_import_to_elastic_search(flow_sid)
+  es.indices.create(index=ELASTICSEARCH_INDEX_NAME, ignore=400)
+  es.indices.create(index=ELASTICSEARCH_TREE_INDEX_NAME, ignore=400)
   setInterval(REFRESH_RATE_IN_SECONDS, run_5min_import_to_elastic_search, flow_sid)
 
 init()
