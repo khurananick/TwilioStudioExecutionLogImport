@@ -52,7 +52,7 @@ Confirm both services are running.
 1. Go to your kibana home page. For docker it's probably `localhost:8888` and for manual install it's probably `localhost:5601`. You will be greeted with the page below. Click the Dashboard icon to continue.
 <p align="center"><img src="./screenshots/kibana-home-annotated.png?raw=true" width="650px" /></p>
 
-2. Select STUDIO FLOW LIVE VIEW or STUDIO FLOW LIVE TREE VIEW based on the type of graph you'd like to see. For this guide, we will use the former. 
+2. Select STUDIO FLOW LIVE VIEW based on the type of graph you'd like to see. For this guide, we will use the former. 
 
 <p align="center"><img src="./screenshots/kibana-dashboard-list.png?raw=true" width="650px" /></p>
 
