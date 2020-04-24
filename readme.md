@@ -8,7 +8,7 @@ Running this application requires Elasticsearch, Kibana and Python3.7. You may e
 
 ## Installation
 #### Option 1: Docker
-Instructions on downloading and intalling the Docker image are at: https://hub.docker.com/repository/docker/khurananick/twilio_studio_logs_pyapp
+Instructions on downloading and intalling the Docker image are at: https://hub.docker.com/r/khurananick/twilio_studio_logs_pyapp
 
 **Note**: After installing the docker image, skip to dashboard setup below.
 
