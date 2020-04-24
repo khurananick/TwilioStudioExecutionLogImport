@@ -82,7 +82,7 @@ Confirm both services are running.
 
 ## How To Run
 
-`python3 run.py {FLOW_SID}`
+`./start {FLOW_SID}`
 
 - This will start the import.
 
