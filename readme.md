@@ -52,7 +52,7 @@ Confirm both services are running.
 1. Go to your kibana home page. For docker it's probably `localhost:8888` and for manual install it's probably `localhost:5601`. You will be greeted with the page below. Click the Dashboard icon to continue.
 <p align="center"><img src="./screenshots/kibana-home-annotated.png?raw=true" width="650px" /></p>
 
-2. Select STUDIO FLOW LIVE VIEW based on the type of graph you'd like to see. For this guide, we will use the former. 
+2. Select STUDIO FLOW LIVE VIEW.
 
 <p align="center"><img src="./screenshots/kibana-dashboard-list.png?raw=true" width="650px" /></p>
 
@@ -60,9 +60,8 @@ Confirm both services are running.
 
 <p align="center"><img src="./screenshots/kibana-dashboard-settings.png?raw=true" width="650px" /></p>
 
-**Once you click Apply and then Start, you can click out of this popout.**
-
-4. Run the python task to start importing your Studio Log data with `python3 run.py {FLOW_SID}` and start pinging your studio flow, then you can start seeing the data in your dashboard screen:
+**Click Start and then Apply**
+4. If you haven't already, run the python task to start importing your Studio Log data with `./start {FLOW_SID}` and start calling your studio flow, then you can start seeing the data in your dashboard screen:
 
 <p align="center"><img src="./screenshots/kibana-dashboard.png?raw=true" width="650px" /></p>
 
