@@ -61,6 +61,7 @@ Confirm both services are running.
 <p align="center"><img src="./screenshots/kibana-dashboard-settings.png?raw=true" width="650px" /></p>
 
 **Click Start and then Apply**
+
 4. If you haven't already, run the python task to start importing your Studio Log data with `./start {FLOW_SID}` and start calling your studio flow, then you can start seeing the data in your dashboard screen:
 
 <p align="center"><img src="./screenshots/kibana-dashboard.png?raw=true" width="650px" /></p>
