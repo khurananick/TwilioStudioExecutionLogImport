@@ -45,10 +45,6 @@ Confirm both services are running.
 
 <p align="center"><img src="./screenshots/kibana-import-sucess.png?raw=true" width="650px" /></p>
 
-\
-\
-\
-
 ## Dashboard Setup
 1. Go to your kibana home page. For docker it's probably `localhost:8888` and for manual install it's probably `localhost:5601`. You will be greeted with the page below. Click the Dashboard icon to continue.
 <p align="center"><img src="./screenshots/kibana-home-annotated.png?raw=true" width="650px" /></p>
@@ -67,20 +63,12 @@ Confirm both services are running.
 
 <p align="center"><img src="./screenshots/kibana-dashboard.png?raw=true" width="650px" /></p>
 
-\
-\
-\
-
 ## How To Test
 **Testing Requirements**
 - This library will test against data in your Twilio project for which you enter your credentails into the secret.py file.
 - Make sure you have run your flow at least once within the last 24 hours for this test to work.
 - Once you have created a flow and ran it at least once, copy the SID of your flow and run the test as follows: 
 `python3 test.py {FLOW_SID}`
-
-\
-\
-\
 
 ## How To Run
 
