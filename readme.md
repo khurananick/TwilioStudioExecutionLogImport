@@ -10,13 +10,13 @@ Running this application requires Elasticsearch, Kibana and Python3.7. You may e
 #### Option 1: Docker
 Instructions on downloading and intalling the Docker image are at: https://hub.docker.com/r/khurananick/twilio_studio_logs_pyapp
 
-**Note**: After installing the docker image, skip to dashboard setup below.
+**Note**: After installing the docker image, skip to [Dashboard Setup](https://github.com/khurananick/TwilioStudioExecutionLogImport#dashboard-setup) below. 
 
 #### Option 2: Manual Install
 **Step 1:** Ensure Elasticsearch and Kibana are installed an running on your machine. For mac users, download and install with:
 
-- `brew install elasticsearch-full`
-- `brew install kibana-full`
+- `brew install elasticsearch-full` or your preferred download method.
+- `brew install kibana-full`  or your preferred download method.
 
 Once installed, make sure the services are running:
 
@@ -25,10 +25,10 @@ Once installed, make sure the services are running:
 
 Confirm both services are running.
 
-**Elastisearch** defaults to: `localhost:9200`\
-**Kibana** defaults to: `localhost:5601`
+- **Elastisearch** defaults to: `localhost:9200`\
+- **Kibana** defaults to: `localhost:5601`
 
-**Step 2:** Clone this repo to your machine.
+**Step 2:** Clone this repo to your machine and `cd` into directoy.
 
 **Step 3:** Create a .env file and add `ACCOUNT_SID` and `AUTH_TOKEN` from your Twilio account.
 
@@ -45,8 +45,9 @@ Confirm both services are running.
 
 <p align="center"><img src="./screenshots/kibana-import-sucess.png?raw=true" width="650px" /></p>
 
-.
-.
+\
+\
+\
 
 ## Dashboard Setup
 1. Go to your kibana home page. For docker it's probably `localhost:8888` and for manual install it's probably `localhost:5601`. You will be greeted with the page below. Click the Dashboard icon to continue.
@@ -66,23 +67,23 @@ Confirm both services are running.
 
 <p align="center"><img src="./screenshots/kibana-dashboard.png?raw=true" width="650px" /></p>
 
-.
-.
+\
+\
+\
 
 ## How To Test
 **Testing Requirements**
 - This library will test against data in your Twilio project for which you enter your credentails into the secret.py file.
 - Make sure you have run your flow at least once within the last 24 hours for this test to work.
 - Once you have created a flow and ran it at least once, copy the SID of your flow and run the test as follows: 
-
 `python3 test.py {FLOW_SID}`
 
-.
-.
+\
+\
+\
 
 ## How To Run
 
 `./start {FLOW_SID}`
-
 - This will start the import.
 
