@@ -13,6 +13,8 @@ Instructions on downloading and intalling the Docker image are at: https://hub.d
 **Note**: After installing the docker image, skip to [Dashboard Setup](https://github.com/khurananick/TwilioStudioExecutionLogImport#dashboard-setup) below. 
 
 #### Option 2: Manual Install
+Use this option if you would prefer to not download an Ubuntu VM and run the individual services natively. \
+
 **Step 1:** Ensure Elasticsearch and Kibana are installed an running on your machine. For mac users, download and install with:
 
 - `brew install elasticsearch-full` or your preferred download method.
