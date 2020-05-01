@@ -111,22 +111,19 @@ def get_all_flow_execution_log_details(flow_sid, start_date=None, end_date=None)
     # get steps for execution
     execution['steps'] = get_execution_steps(flow_sid, execution['sid'])
     # get step context if relevant.
-    previous_step_name = ""
-    has_variables = False
     variables_key = "SET_REPORTING_FILTERS"
+    has_variables = False
+    previous_step_name = ""
+    variables = {}
     for step in execution['steps']:
       if previous_step_name == variables_key:
         has_variables = True
         context = get_execution_step_context(flow_sid, execution['sid'], step['sid'])
-        step['variables'] = {**step['variables'].copy(), **context[variables_key]}
+        variables = {**variables.copy(), **context[variables_key]}
       previous_step_name = step["name"]
     # assign variables to all the steps
     if has_variables:
-      variables = {}
       for step in execution['steps']:
-        variables = {**variables.copy(), **step['variables']}
-      for key in variables:
-        for step in execution['steps']:
-          step[f"_var_{key}"] = variables[key]
+        step['variables'] = variables
   return executions
 
