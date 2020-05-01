@@ -14,7 +14,8 @@ def format_step(step):
     "transitioned_to": step.transitioned_to,
     "transitioned_from": step.transitioned_from,
     "@timestamp": datetime.strptime(str(step.date_created), '%Y-%m-%d %H:%M:%S+00:00'),
-    "variables": {}
+    "variables": {},
+    "searchable": ""
   }
 
 def percent_str(num, den):
@@ -125,5 +126,6 @@ def get_all_flow_execution_log_details(flow_sid, start_date=None, end_date=None)
     if has_variables:
       for step in execution['steps']:
         step['variables'] = variables
+        step['searchable'] = str(variables)
   return executions
 
