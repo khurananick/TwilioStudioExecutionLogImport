@@ -51,7 +51,7 @@ def run_5min_import_to_elastic_search(flow_sid):
     for execution in executions:
       for step in execution['steps']:
         existing = es.get(index=ELASTICSEARCH_INDEX_NAME, id=step['sid'], ignore=[400, 404])
-        if not existing['found']:
+        if not existing.get('found'):
           print(f"Adding execution step to index: {step['sid']}")
           es.index(index=ELASTICSEARCH_INDEX_NAME, id=step['sid'], body=step)
     es.index(index=ELASTICSEARCH_TREE_INDEX_NAME, id="0", body=f.format_tree_data(executions))
