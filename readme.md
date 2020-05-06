@@ -77,3 +77,17 @@ Confirm both services are running.
 `./start {FLOW_SID}`
 - This will start the import.
 
+## Setting Searchable Filter Variables
+
+You can add data to your studio flow that can be later used in Kibana to filter down your graphs. To set filters:
+
+1. Add a function to your Studio flow with the name `GET_REPORTING_FILTERS`
+2. Make sure your function returns a json response in the format example: `{gender: "Male", occupation: "Nurse"}` - you can track any number of variables you'd like, just be sure that your json object is formatted as shown above.
+
+<p align="center"><img src="./screenshots/kibana-tracking-variabls.png?raw=true" width="650px" /></p>
+
+## Filtering By Variables
+
+You can filter down your graphs to only display data that matches your filter variables. 
+
+<p align="center"><img src="./screenshots/kibana-filtering-variables.png?raw=true" width="650px" /></p>
