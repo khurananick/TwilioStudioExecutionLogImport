@@ -5,19 +5,21 @@ import functions as f
 
 from elasticsearch import Elasticsearch
 es = Elasticsearch()
-# make sure to use these strings only.
+# do not change these strings.
 ELASTICSEARCH_INDEX_NAME            = "studio_execution_logs"
 ELASTICSEARCH_TREE_INDEX_NAME       = "studio_execution_logs_tree"
 ELASTICSEARCH_TREE_LIVE_INDEX_NAME  = "studio_execution_logs_tree_live"
 REFRESH_RATE_IN_SECONDS             = 5
 
-# Keep "Trigger" and "Ended" items.
+
+# Keep "Trigger" and "Ended" items, but you can change all the stuff in the middle if needed.
 routes = [
   ["Trigger", "ASK_IF_COVID", "TEST_IF_COVID", "ASK_IF_FEVER", "TEST_IF_FEVER", "SAY_CONNECTING_TO_COVID_RESPONSE_TEAM", "SEND_TO_COVID_RESPONSE_TEAM", "Ended"],
   ["Trigger", "ASK_IF_COVID", "TEST_IF_COVID", "SAY_FORWARDING_TO_NURSE", "FORWARD_TO_NURSE_LINE", "Ended"],
   ["Trigger", "ASK_IF_COVID", "TEST_IF_COVID", "ASK_IF_FEVER", "TEST_IF_FEVER", "SAY_FORWARDING_TO_NURSE", "FORWARD_TO_NURSE_LINE", "Ended"]
 ]
 
+# Feel free to add more personas.
 def get_random_persona():
   return {
     "gender":         random.choice(["Male", "Female", "Other"]),
