@@ -1,3 +1,15 @@
+from threading import Thread
+from time import sleep
+import json
+
+def call_at_interval(period, callback, args):
+  while True:
+    sleep(period)
+    callback(*args)
+
+def setInterval(period, callback, *args):
+  Thread(target=call_at_interval, args=(period, callback, args)).start()
+
 def format_execution(execution):
   return {
     "sid": execution.sid,
