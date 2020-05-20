@@ -5,29 +5,48 @@ import glob as g
 from elasticsearch import Elasticsearch
 es = Elasticsearch()
 
-# Keep "Trigger" and "Ended" items, but you can change all the stuff in the middle if needed.
-routes = [
-  ["Trigger", "ASK_IF_COVID", "TEST_IF_COVID", "ASK_IF_FEVER", "TEST_IF_FEVER", "SAY_CONNECTING_TO_COVID_RESPONSE_TEAM", "SEND_TO_COVID_RESPONSE_TEAM", "Ended"],
-  ["Trigger", "ASK_IF_COVID", "TEST_IF_COVID", "SAY_FORWARDING_TO_NURSE", "FORWARD_TO_NURSE_LINE", "Ended"],
-  ["Trigger", "ASK_IF_COVID", "TEST_IF_COVID", "ASK_IF_FEVER", "TEST_IF_FEVER", "SAY_FORWARDING_TO_NURSE", "FORWARD_TO_NURSE_LINE", "Ended"]
-]
-
-# Feel free to add more personas.
-def get_random_persona():
-  return {
-    "gender":         random.choice(["Male", "Female", "Other"]),
-    "occupation":     random.choice(["Developer", "Support", "Admin"]),
-    "favorite_color": random.choice(["Red", "Green", "Blue"]),
-    "usage_rating":   random.choice(["High", "Low", "Medium"]),
-    "age":            random.choice(range(23,85))
-  }
+def make_fake_data():
+  return random.choice([
+    {
+      "persona": {
+        "gender":         random.choice(["Male", "Female", "Other"]),
+        "occupation":     random.choice(["Developer", "Support", "Admin", "Provider", "Nurse"]),
+        "age":            random.choice(range(23,85))
+      },
+      "route": random.choice([
+        ["Trigger", "ASK_IF_COVID", "TEST_IF_COVID", "ASK_IF_FEVER", "TEST_IF_FEVER", "SAY_CONNECTING_TO_COVID_RESPONSE_TEAM", "SEND_TO_COVID_RESPONSE_TEAM", "Ended"],
+        ["Trigger", "ASK_IF_COVID", "TEST_IF_COVID", "SAY_FORWARDING_TO_NURSE", "FORWARD_TO_NURSE_LINE", "Ended"],
+        ["Trigger", "ASK_IF_COVID", "TEST_IF_COVID", "ASK_IF_FEVER", "TEST_IF_FEVER", "SAY_FORWARDING_TO_NURSE", "FORWARD_TO_NURSE_LINE", "Ended"]
+      ])
+    },
+    {
+      "persona": {
+        "gender":         random.choice(["Male", "Female", "Other"]),
+        "occupation":     random.choice(["Provider", "Nurse"]),
+        "age":            random.choice(range(68,85))
+      },
+      "route": ["Trigger", "ASK_IF_COVID", "TEST_IF_COVID", "ASK_IF_FEVER", "TEST_IF_FEVER", "SAY_CONNECTING_TO_COVID_RESPONSE_TEAM", "SEND_TO_COVID_RESPONSE_TEAM", "Ended"]
+    },
+    {
+      "persona": {
+        "gender":         random.choice(["Male", "Female", "Other"]),
+        "occupation":     random.choice(["Developer", "Support", "Admin"]),
+        "age":            random.choice(range(23,67))
+      },
+      "route": random.choice([
+        ["Trigger", "ASK_IF_COVID", "TEST_IF_COVID", "SAY_FORWARDING_TO_NURSE", "FORWARD_TO_NURSE_LINE", "Ended"],
+        ["Trigger", "ASK_IF_COVID", "TEST_IF_COVID", "ASK_IF_FEVER", "TEST_IF_FEVER", "SAY_FORWARDING_TO_NURSE", "FORWARD_TO_NURSE_LINE", "Ended"]
+      ])
+    },
+  ])
 
 executions = []
 def create_random_execution():
   execution_sid = secrets.token_hex(15)
   execution = { "sid": execution_sid, "status": "finished", "steps": [] }
-  route = random.choice(routes)
-  persona = get_random_persona()
+  fake = make_fake_data()
+  route = fake["route"]
+  persona = fake["persona"]
   arrlen = len(route)
   for i in range(arrlen):
     step_name = route[i]
