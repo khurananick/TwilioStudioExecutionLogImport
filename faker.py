@@ -30,7 +30,7 @@ def make_fake_data():
     {
       "persona": {
         "gender":         random.choice(["Male", "Female", "Other"]),
-        "occupation":     random.choice(["Developer", "Support", "Admin"]),
+        "occupation":     random.choice(["Developer", "Support", "Admin", "Provider", "Nurse"]),
         "age":            random.choice(range(23,67))
       },
       "route": random.choice([
