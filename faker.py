@@ -5,12 +5,15 @@ import glob as g
 from elasticsearch import Elasticsearch
 es = Elasticsearch()
 
+
+GENDERS = ["Male", "Female", "Other"]
+OCCUPATIONS = ["Developer", "Support", "Admin", "Provider", "Nurse"]
 def make_fake_data():
   return random.choice([
     {
       "persona": {
-        "gender":         random.choice(["Male", "Female", "Other"]),
-        "occupation":     random.choice(["Developer", "Support", "Admin", "Provider", "Nurse"]),
+        "gender":         random.choice(GENDERS),
+        "occupation":     random.choice(OCCUPATIONS),
         "age":            random.choice(range(23,85))
       },
       "route": random.choice([
@@ -30,7 +33,7 @@ def make_fake_data():
     {
       "persona": {
         "gender":         random.choice(["Male", "Female", "Other"]),
-        "occupation":     random.choice(["Developer", "Support", "Admin", "Provider", "Nurse"]),
+        "occupation":     random.choice(OCCUPATIONS),
         "age":            random.choice(range(23,67))
       },
       "route": random.choice([
