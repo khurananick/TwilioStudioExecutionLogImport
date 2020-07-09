@@ -3,3 +3,4 @@ colorama
 requests
 elasticsearch
 python-dotenv
+flask
