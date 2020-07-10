@@ -20,10 +20,10 @@ def example():
       "name": data.get('CurrentTask'),
       "@timestamp": datetime.utcnow(),
     }
-    es.index(index=g.ELASTICSEARCH_INDEX_NAME, id=event['sid'], body=event)
+    es.index(index=g.ELASTICSEARCH_AUTOPILOT_INDEX_NAME, id=event['sid'], body=event)
   return jsonify({"success": True})
 
-es.indices.create(index=g.ELASTICSEARCH_INDEX_NAME, ignore=400)
+es.indices.create(index=g.ELASTICSEARCH_AUTOPILOT_INDEX_NAME, ignore=400)
 app.run()
 
 # def run():
