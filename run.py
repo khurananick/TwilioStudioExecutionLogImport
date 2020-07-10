@@ -53,3 +53,4 @@ init()
 # delete existing index
 # es.indices.delete(index=g.ELASTICSEARCH_INDEX_NAME, ignore=[400, 404])
 # es.indices.delete(index=g.ELASTICSEARCH_TREE_INDEX_NAME, ignore=[400, 404])
+# FW80a732d2352f5e212413f8c46ad4446b

@@ -1,4 +1,5 @@
 # import pythons libs
+import os
 import sys
 import random
 from colorama import Fore, Back, Style
@@ -10,10 +11,13 @@ import json
 from twilio.rest import Client
 
 # import local libraries
-import secret as ENV
+from dotenv import load_dotenv
+load_dotenv()
+TWILIO_ACCOUNT_SID=os.environ.get('ACCOUNT_SID')
+TWILIO_AUTH_TOKEN=os.environ.get('AUTH_TOKEN')
 import functions as f
 
-client = Client(ENV.TWILIO_ACCOUNT_SID, ENV.TWILIO_AUTH_TOKEN)
+client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
 f.datetime = datetime
 f.timedelta = timedelta
 f.client = client
@@ -37,7 +41,7 @@ def print_success(msg):
 # Ensure Credentials
 def check_twilio_credentials():
   print_start("Checking Account SID and Auth Token.")
-  if not ENV.TWILIO_ACCOUNT_SID or not ENV.TWILIO_AUTH_TOKEN:
+  if not TWILIO_ACCOUNT_SID or not TWILIO_AUTH_TOKEN:
     return False
   return True
 

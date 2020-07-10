@@ -1,3 +1,12 @@
 #!/bin/bash
 git pull
-python3 run.py $1
+
+pat="^UA"
+if [[ $1 =~ $pat ]];
+then
+  echo "running autopilot"
+  python3 run_autopilot.py $1
+else
+  echo "running studio"
+  python3 run.py $1
+fi
