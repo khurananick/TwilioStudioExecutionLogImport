@@ -51,7 +51,7 @@ Confirm both services are running.
 1. Go to your kibana home page. For docker it's probably `localhost:8888` and for manual install it's probably `localhost:5601`. You will be greeted with the page below. Click the Dashboard icon to continue.
 <p align="center"><img src="./screenshots/kibana-home-annotated.png?raw=true" width="650px" /></p>
 
-2. Select STUDIO FLOW LIVE VIEW.
+2. Select STUDIO FLOW LIVE VIEW or AUTOPILOT LIVE VIEW.
 
 <p align="center"><img src="./screenshots/kibana-dashboard-list.png?raw=true" width="650px" /></p>
 
@@ -61,7 +61,7 @@ Confirm both services are running.
 
 **Click Start and then Apply**
 
-4. If you haven't already, run the python task to start importing your Studio Log data with `./start {FLOW_SID}` and start calling your studio flow, then you can start seeing the data in your dashboard screen:
+4. If you haven't already, run the python task to start importing your Studio Log data with `./start {FLOW_SID}` or `./start {AUTOPILOT_SID}` and start calling your studio flow or autopilot queries, then you can start seeing the data in your dashboard screen:
 
 <p align="center"><img src="./screenshots/kibana-dashboard.png?raw=true" width="650px" /></p>
 
@@ -74,7 +74,7 @@ Confirm both services are running.
 
 ## How To Run
 
-`./start {FLOW_SID}`
+`./start {FLOW_SID}` or `./start {AUTOPILOT_SID}`
 - This will start the import.
 
 ## Setting Searchable Filter Variables
