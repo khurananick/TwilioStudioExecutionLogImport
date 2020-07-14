@@ -24,53 +24,10 @@ f.timedelta = timedelta
 f.client = client
 
 def get_all_flow_execution_log_details(apsid):
-  executions = {}
-  previous_step_name = ""
   queries = client.autopilot.assistants(apsid).queries.list(limit=500)
-
-  # format all executions.
-  for query in queries:
-    if not executions.get(query.dialogue_sid):
-      executions[query.dialogue_sid] = { "steps": [] }
-    if query.results.get('task'):
-      executions[query.dialogue_sid]['steps'].append({
-        "sid": query.sid,
-        "execution_sid": query.dialogue_sid,
-        "name": query.results.get('task'),
-        "type": query.results.get('task'),
-        "transitioned_to": previous_step_name,
-        "transitioned_from": "",
-        "@timestamp": datetime.strptime(str(query.date_created), '%Y-%m-%d %H:%M:%S+00:00'),
-        "date_created": query.date_created.isoformat(),
-        "variables": {},
-        "searchable": ""
-      })
-      executions[query.dialogue_sid]['steps'] = sorted(executions[query.dialogue_sid]['steps'], key = lambda i: i['date_created']) 
-      previous_step_name = query.results.get('task')
-
-  # add transitioned_from
-  for key in executions:
-    execution = executions[key]
-    previous_step_name = ""
-    for step in execution["steps"]:
-      step['transitioned_from'] = previous_step_name
-      previous_step_name = step['name']
-    execution["steps"][-1]["transitioned_to"] = "Ended"
-  variables_key = "GET_REPORTING_FILTERS"
-  has_variables = False
-  previous_step_name = ""
-  variables = {}
-  for step in execution['steps']:
-    if previous_step_name == variables_key:
-      has_variables = True
-      variables = {**variables.copy(), **json.loads(context[variables_key]['body'])}
-    previous_step_name = step["name"]
-  # assign variables to all the steps
-  if has_variables:
-    for step in execution['steps']:
-      step['variables'] = variables
-      step['searchable'] = str(variables)
-  return list(executions.values())
+  formatted_queries = f.format_autopilot_queries(queries)
+  formatted_executions = f.format_autopilot_executions(formatted_queries)
+  return formatted_executions
 
 def run_5min_import_to_elastic_search(flow_sid):
   # pull all the logs.

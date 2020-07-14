@@ -23,6 +23,8 @@ f.timedelta = timedelta
 f.client = client
 f.json = json
 
+import testdata as td
+
 def error_out(msg):
   print(Fore.RED + msg)
   print(Style.RESET_ALL)
@@ -30,6 +32,7 @@ def error_out(msg):
 
 def print_start(msg):
   print(Fore.WHITE + msg)
+  print(Style.RESET_ALL)
   return
 
 def print_success(msg):
@@ -37,6 +40,55 @@ def print_success(msg):
   print(Style.RESET_ALL)
   return
 
+# Test format_tree_data
+def test_format_tree_data():
+  print_start("Testing format_tree_data")
+  executions = [{'sid': 'FN96887eee3139b575f59780f3c59f420a', 'status': 'active', 'steps': 
+                 [{'sid': 'FT117e04280c8d0d78afdc9770d5b0bc65', 'execution_sid': 'FN96887eee3139b575f59780f3c59f420a', 
+                   'name': 'GET_REPORTING_FILTERS', 'type': 'incomingCall', 'transitioned_to': 'GET_REPORTING_FILTERS', 
+                   'transitioned_from': 'Trigger', '@timestamp': datetime(2020, 7, 14, 17, 30, 56), 'variables': 
+                     {'gender': 'Other', 'occupation': 'Support', 'favorite_color': 'Admin', 'usage_rating': 'Medium'}, 
+                   'searchable': "{'gender': 'Other', 'occupation': 'Support', 'favorite_color': 'Admin', 'usage_rating': 'Medium'}"},
+                   {'sid': 'FT6430af37672f70ba0eb8ffef0ce313ee', 'execution_sid': 'FN96887eee3139b575f59780f3c59f420a', 
+                   'name': 'ASK_IF_COVID', 'type': 'success', 'transitioned_to': 'ASK_IF_COVID', 'transitioned_from': 
+                   'GET_REPORTING_FILTERS', '@timestamp': datetime(2020, 7, 14, 17, 30, 59), 'variables': 
+                   {'gender': 'Other', 'occupation': 'Support', 'favorite_color': 'Admin', 'usage_rating': 'Medium'}, 
+                   'searchable': "{'gender': 'Other', 'occupation': 'Support', 'favorite_color': 'Admin', 'usage_rating': 'Medium'}"}, 
+                   {'sid': 'FT4c9eead07d70145b6b22edaf022a6ecb', 'execution_sid': 'FN96887eee3139b575f59780f3c59f420a', 
+                       'name': 'TEST_IF_COVID', 'type': 'keypress', 'transitioned_to': 'TEST_IF_COVID', 'transitioned_from': 'ASK_IF_COVID', 
+                       '@timestamp': datetime(2020, 7, 14, 17, 31, 7), 'variables': 
+                       {'gender': 'Other', 'occupation': 'Support', 'favorite_color': 'Admin', 'usage_rating': 'Medium'}, 
+                       'searchable': "{'gender': 'Other', 'occupation': 'Support', 'favorite_color': 'Admin', 'usage_rating': 'Medium'}"}, 
+                   {'sid': 'FTf193e0fd164e4bd19b65a0f33bb3a7b5', 'execution_sid': 'FN96887eee3139b575f59780f3c59f420a', 'name': 'ASK_IF_FEVER', 'type': 'match', 
+                       'transitioned_to': 'ASK_IF_FEVER', 'transitioned_from': 'TEST_IF_COVID', '@timestamp': datetime(2020, 7, 14, 17, 31, 7), 
+                       'variables': {'gender': 'Other', 'occupation': 'Support', 'favorite_color': 'Admin', 'usage_rating': 'Medium'}, 
+                       'searchable': "{'gender': 'Other', 'occupation': 'Support', 'favorite_color': 'Admin', 'usage_rating': 'Medium'}"}]}]
+  expected_resp = {'data': [{'id': 'GET_REPORTING_FILTERS.0', 'name': 'GET REPORTING FILTERS', 'parent': '', 'count': 1, 
+  'display_name': 'GET REPORTING FILTERS (1) (100%)'}, {'id': 'ASK_IF_COVID.1', 'name': 'ASK IF COVID', 
+  'parent': 'GET_REPORTING_FILTERS.0', 'count': 1, 'display_name': 'ASK IF COVID (1) (100%)'}, {'id': 'TEST_IF_COVID.2', 
+      'name': 'TEST IF COVID', 'parent': 'ASK_IF_COVID.1', 'count': 1, 'display_name': 'TEST IF COVID (1) (100%)'}]}
+  resp = f.format_tree_data(executions)
+  if(resp == expected_resp):
+    print_success("Passed format_tree_data")
+  else:
+    error_out("Failed format_tree_data")
+
+if(sys.argv[1].startswith("FW")):
+  test_format_tree_data()
+
+# Test format_autopilot_executions
+def test_format_autopilot_executions():
+  print_start("Testing format_autopilot_executions")
+  expected_output = td.autopilot_formatted_executions()
+  input = td.autopilot_formatted_queries()
+  output = f.format_autopilot_executions(input)
+  if(output == expected_output):
+    print_success("Passed test_format_autopilot_executions")
+  else:
+    error_out("Failed test_format_autopilot_executions")
+
+if(sys.argv[1].startswith("UA")):
+  test_format_autopilot_executions()
 
 # Ensure Credentials
 def check_twilio_credentials():
@@ -103,4 +155,3 @@ if has_execution_steps:
   print_success("Found context in step.")
 else:
   error_out("Step does not have any context.")
-
